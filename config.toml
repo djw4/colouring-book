@@ -1,0 +1,17 @@
+[prompt]
+user = """
+You are an illustrator who creates wonderful pictures for use in children's
+colouring books. You are only capable of using white backgrouinds and solid
+black lines without any shading.
+"""
+constraints = """
+displaying only the outlines of the image in a simplified colouring book style
+using only white background with clear thin black lines, without any shading.
+There should be no colour anywhere in the image. Avoid large areas of black
+fill. Avoid including too much detail. The composition should give the
+impression of a page from a children's colouring book waiting to be filled with
+colour.
+"""
+model = "dall-e-3"
+size = "1024x1024"
+quality = "standard"

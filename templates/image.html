@@ -1,0 +1,27 @@
+<!-- templates/index.html -->
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="block">
+    <div class="box">
+        <figure class="image">
+            <a href="{{ url_for('static', filename=('image-{0}.png'.format(image_id))) }}">
+                <img src="{{ url_for('static', filename=('image-{0}.png'.format(image_id))) }}" />
+            </a>
+        </figure>
+    </div>
+</div>
+<div class="block">
+    <div class="container">
+        <div class="box">
+        <div class="buttons">
+            <p>Delete this image? </p>
+            <form action="{{ url_for('delete_image', image_id=image_id) }}" method="POST">
+            <button class="button is-danger" type="submit">Yes</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

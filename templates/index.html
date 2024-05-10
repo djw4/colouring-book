@@ -1,0 +1,46 @@
+<!-- templates/index.html -->
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="block">
+<h3 class="subtitle">New Image</h3>
+<form action="{{ url_for('index') }}" method="POST">
+<div class="field has-addons">
+<p class="control is-expanded">
+    <input class="input is-rounded" type="text" id="prompt" name="prompt"
+{% if prompt %}
+    value="{{ prompt }}">
+{% else %}
+    placeholder="Spiderman eating birthday cake">
+{% endif %}
+</p>
+<p class="control">
+    <button class="button is-info is-rounded" type="submit">Generate</button>
+</p>
+</div>
+
+{% if filename %}
+<div class="field has-addons block">
+    <p class="control">
+        <img src="{{ url_for('static', filename=filename) }}" alt="Generated Image">
+    </p>
+</div>
+{% endif %}
+</form>
+</div>
+
+<div class="block py-4">
+    <h3 class="subtitle">Previous Images</h3>
+    <div class="grid">
+        {% for each in previous_images %}
+        <div class="cell">
+            <figure class="image is-128x128">
+                <a href="{{ url_for('show_image', image_id=each.replace('thumb-','').replace('.png','')) }}">
+                    <img src="{{ url_for('static', filename=each) }}" />
+                </a>
+            </figure>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

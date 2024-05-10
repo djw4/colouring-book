@@ -1,0 +1,14 @@
+services:
+  colouring-book:
+    container_name: colouring-book
+    image: danjw8502/colouring-book:${IMAGE_TAG:-latest}
+    ports:
+      - ${APP_PORT:-8080}:8080/tcp
+    environment:
+      TZ: ${TZ:-Australia/Brisbane}
+    env_file:
+      - .env
+    volumes:
+      - ./static:/app/static
+      - ./logs:/var/log
+    restart: unless-stopped
